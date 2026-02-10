@@ -55,7 +55,6 @@ export async function POST(request: Request) {
         })
       }
     })
-    console.log(finalMatches)
 
     const result = {
         gameName : data.gameName,
