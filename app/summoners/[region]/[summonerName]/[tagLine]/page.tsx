@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import MatchList from "./MatchList";
+import { Spinner } from "@/components/ui/spinner";
 
 const SpecificPlayerPage = async ({
   params,
@@ -25,7 +26,7 @@ const SpecificPlayerPage = async ({
       <h1>Summoner Name: {rest.summonerName}</h1>
       <h2>Tag Line: {rest.tagLine}</h2>
       <h3>Region: {rest.region}</h3>
-      <Suspense fallback={<div>Loading matches...</div>}>
+      <Suspense fallback={<Spinner className="w-full" />}>
         <MatchList MatchesPromise={data} />
       </Suspense>
     </div>
