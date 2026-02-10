@@ -35,23 +35,7 @@ const SearchBar = () => {
     const onSubmit = (data: z.infer<typeof formSchema>) => {
         // Here you would typically make an API call to fetch the user data based on the form input
         setDisabled(true)
-        fetch('/api/user', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        })
-        .then(response => response.json())
-        .then(mes => {
-            if (mes.message.gameName == undefined) {
-                console.log("User not found")
-                toast.error("User not found. Please check the summoner name, tag line, and region.")
-            } else {
-                redirect(`/summoners/${mes.message.region}/${mes.message.puuid}`) // Redirect to the summoner's page using region and puuid
-            }
-            setDisabled(false)
-        })
+        redirect(`/summoners/${data.region}/${data.summonerName}/${data.tagLine}`) // Redirect to the summoner's page using region and puuid
     }
 
   return (
